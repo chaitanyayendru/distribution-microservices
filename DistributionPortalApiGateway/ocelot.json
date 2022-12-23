@@ -1,0 +1,40 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Products/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Products/{everything}",
+      "ServiceName": "ProductService",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "ApiSecurity",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType" : "SALESMAN"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Products",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Products",
+      "ServiceName": "ProductService",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "ApiSecurity",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType" : "SALESMAN"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "UseServiceDisCategoryy" : true,
+    "ServiceDisCategoryyProvider": { "Type": "Eureka", "Host" : "localhost", "Port" : "8761"}
+  }
+}

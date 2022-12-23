@@ -1,0 +1,7 @@
+{
+  "GlobalConfiguration": {
+    "ServiceDisCategoryyProvider": {
+      "Host" : "eureka-server"
+    }
+  }
+}
